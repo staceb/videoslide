@@ -59,12 +59,12 @@ li{
   <source src="Project5.mp4" type="video/mp4">
 </video>
     </li>
-    <li class="hidden w3-animate-right">
+    <li class="hidden ">
       <video width="100%" playsinline>
   <source src="Project4.mp4" type="video/mp4">
   </video>
     </li>
-    <li class="hidden w3-animate-right">
+    <li class="hidden ">
       <video width="100%" playsinline>
   <source src="Project6.mp4" type="video/mp4">
 </video>
@@ -118,13 +118,13 @@ console.log('Video has ended!');
             console.log(video);
             if(i==slide){
 
-                item.attr("class", "visible w3-animate-right");
+                item.attr("class", "visible");
                 video.play();
 
             }
             else{
 
-              item.attr("class", "hidden w3-animate-right");
+              item.attr("class", "hidden");
               video.pause();
 
             }
