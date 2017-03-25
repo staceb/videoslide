@@ -1,0 +1,137 @@
+<html>
+<head>
+<style>
+
+body{
+
+  margin: 0;
+  padding:0;
+
+}
+
+ul{
+
+  margin:0;
+  padding:0;
+}
+
+li{
+
+  list-style: none;
+  display: inline;
+
+}
+
+.hidden{
+
+  display:none;
+}
+
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 5px 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.w3-animate-right{position:relative;animation:animateright 0.4s}
+@keyframes animateright{from{right:-200px;opacity:0} to{right:0;opacity:1}}
+
+</style>
+
+</head>
+
+<body>
+<div>
+  <ul class='video-list'>
+    <li class='visible'>
+      <video width="100%" autoplay="true">
+  <source src="Project5.mp4" type="video/mp4">
+</video>
+    </li>
+    <li class="hidden w3-animate-right">
+      <video width="100%">
+  <source src="Project4.mp4" type="video/mp4">
+  </video>
+    </li>
+    <li class="hidden w3-animate-right">
+      <video width="100%">
+  <source src="Project6.mp4" type="video/mp4">
+</video>
+    </li>
+  </ul>
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+
+</div>
+  <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+var slideIndex = 0;
+
+$('video').on('ended',function(){
+
+  if(slideIndex==2){
+
+    slideIndex=0;
+  }
+  else{
+
+    slideIndex +=1;
+
+  }
+
+  currentSlide(slideIndex);
+console.log('Video has ended!');
+
+});
+
+  function currentSlide(slide){
+
+
+
+        var items = $('.video-list').children();
+        var count = items.length;
+
+        console.log(items);
+
+        for(var i = 0;i<count;i++){
+
+            var item = $(items[i]);
+
+            var video = item.children()[0];
+
+            console.log(video);
+            if(i==slide){
+
+                item.attr("class", "visible w3-animate-right");
+                video.play();
+
+            }
+            else{
+
+              item.attr("class", "hidden w3-animate-right");
+              video.pause();
+
+            }
+
+        }
+
+        slideIndex=slide;
+
+  }
+
+</script>
+</html>
